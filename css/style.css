@@ -90,6 +90,7 @@ body {
   background: var(--primary);
   overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
 }
 
 body::before {
@@ -153,6 +154,7 @@ a {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 /* ==============================
@@ -168,6 +170,9 @@ img {
 .section {
   padding: 100px 0;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .section-dark {
@@ -184,7 +189,7 @@ img {
 }
 
 /* ==============================
-   Navegación Premium COMPLETAMENTE RESPONSIVE - CORREGIDA
+   Navegación Premium COMPLETAMENTE RESPONSIVE
 ============================== */
 .navbar {
   position: fixed;
@@ -230,6 +235,7 @@ img {
   display: flex;
   gap: 2rem;
   list-style: none;
+  align-items: center;
 }
 
 .nav-list a {
@@ -257,18 +263,18 @@ img {
 }
 
 .nav-list a:hover::before,
-.nav-list a.active::before {
+.nav-list a.activo::before {
   left: 0;
 }
 
 .nav-list a:hover,
-.nav-list a.active {
+.nav-list a.activo {
   color: var(--text-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
 }
 
-/* Menú móvil - CORREGIDO */
+/* Menú móvil */
 .mobile-menu {
   display: none;
   position: fixed;
@@ -336,7 +342,7 @@ img {
 .mobile-nav a:nth-child(4) { transition-delay: 0.25s; }
 .mobile-nav a:nth-child(5) { transition-delay: 0.3s; }
 
-/* Botón hamburguesa - CORREGIDO */
+/* Botón hamburguesa */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -387,6 +393,7 @@ img {
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  background: var(--gradient-dark);
 }
 
 .index-page .inicio::before {
@@ -422,6 +429,9 @@ img {
 .inicio-content {
   position: relative;
   z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .foto-perfil {
@@ -429,7 +439,7 @@ img {
   height: 220px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
   border: 4px solid transparent;
   background: var(--gradient-primary) padding-box,
               var(--gradient-primary) border-box;
@@ -485,6 +495,7 @@ img {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-top: 0.5rem;
 }
 
 .descripcion {
@@ -524,6 +535,7 @@ img {
   transition: var(--transition);
   box-shadow: var(--shadow-soft);
   text-decoration: none;
+  margin: 0.5rem;
 }
 
 .btn:hover {
@@ -537,6 +549,14 @@ img {
 
 .btn-accent {
   background: var(--gradient-accent);
+}
+
+.btn-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 /* ==============================
@@ -567,41 +587,38 @@ img {
   transform: translateX(-60px) scale(0.95);
 }
 
-/* Efecto de partículas */
-.particles {
-  position: absolute;
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
   pointer-events: none;
-  z-index: 1;
 }
 
-.particle {
-  position: absolute;
-  background: var(--accent);
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid var(--accent);
   border-radius: 50%;
-  animation: floatParticle 8s ease-in-out infinite;
+  animation: spin 1s linear infinite;
 }
 
-@keyframes floatParticle {
-  0%, 100% { 
-    transform: translate(0, 0) rotate(0deg); 
-    opacity: 0.3;
-  }
-  25% { 
-    transform: translate(100px, -50px) rotate(90deg); 
-    opacity: 0.6;
-  }
-  50% { 
-    transform: translate(50px, -100px) rotate(180deg); 
-    opacity: 0.3;
-  }
-  75% { 
-    transform: translate(-50px, -50px) rotate(270deg); 
-    opacity: 0.6;
-  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* ==============================
@@ -1034,6 +1051,7 @@ img {
   font-size: 1rem;
   transition: var(--transition);
   resize: vertical;
+  font-family: inherit;
 }
 
 .input-field input:focus,
@@ -1082,68 +1100,6 @@ img {
   color: var(--text-muted);
 }
 
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
-}
-
-.loading-screen.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 3px solid rgba(0, 0, 0, 0.1);
-  border-top: 3px solid var(--accent);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Efecto de brillo en hover */
-.hover-glow {
-  transition: var(--transition);
-}
-
-.hover-glow:hover {
-  filter: drop-shadow(0 0 10px var(--accent-glow));
-}
-
-/* Animación de aparición escalonada */
-.stagger-animation > * {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: staggerFadeIn 0.6s ease forwards;
-}
-
-@keyframes staggerFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
-
 /* ==============================
    MEDIA QUERIES - RESPONSIVE DESIGN COMPLETO
 ============================== */
@@ -1183,9 +1139,18 @@ img {
     width: 200px;
     height: 200px;
   }
+  
+  .btn-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 200px;
+  }
 }
 
-/* Tablets pequeñas y móviles grandes - NAVEGACIÓN CORREGIDA */
+/* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
   .navbar {
     padding: 0.8rem 0;
@@ -1196,7 +1161,7 @@ img {
     position: relative;
   }
   
-  /* Menú de navegación para móviles - CORREGIDO */
+  /* Menú de navegación para móviles */
   .nav-list {
     display: none;
   }
@@ -1258,6 +1223,15 @@ img {
   h2 {
     font-size: clamp(1.5rem, 6vw, 2.5rem);
   }
+  
+  .btn-container {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 280px;
+  }
 }
 
 /* Dispositivos móviles */
@@ -1309,6 +1283,7 @@ img {
   .btn {
     padding: 0.8rem 2rem;
     width: 100%;
+    max-width: 100%;
   }
   
   .foto-perfil {
@@ -1360,6 +1335,11 @@ img {
     padding: 1rem 1.5rem;
     font-size: 1rem;
   }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
 }
 
 /* Pantallas grandes (escritorios grandes) */
@@ -1395,14 +1375,6 @@ img {
   
   .proyectos-grid {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  }
-}
-
-/* Ajustes para alta densidad de píxeles */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 }
 
