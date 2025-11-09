@@ -104,6 +104,8 @@ class PortfolioProfesional {
                     const mobileMenu = document.querySelector('.mobile-menu');
                     if (mobileMenu && mobileMenu.classList.contains('active')) {
                         mobileMenu.classList.remove('active');
+                        document.querySelector('.menu-toggle').classList.remove('active');
+                        document.body.style.overflow = '';
                     }
                 }
             });
@@ -113,14 +115,15 @@ class PortfolioProfesional {
         this.setupActiveNavLinks();
     }
 
-    // Manejo del menú móvil
+    // Manejo del menú móvil - CORREGIDO
     setupMobileMenu() {
         const menuToggle = document.querySelector('.menu-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelectorAll('.mobile-nav a');
 
         if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', () => {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
                 mobileMenu.classList.toggle('active');
                 menuToggle.classList.toggle('active');
                 
@@ -139,7 +142,9 @@ class PortfolioProfesional {
 
             // Cerrar menú al hacer clic fuera
             document.addEventListener('click', (e) => {
-                if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                if (mobileMenu.classList.contains('active') && 
+                    !menuToggle.contains(e.target) && 
+                    !mobileMenu.contains(e.target)) {
                     mobileMenu.classList.remove('active');
                     menuToggle.classList.remove('active');
                     document.body.style.overflow = '';
