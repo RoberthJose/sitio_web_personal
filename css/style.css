@@ -1,5 +1,5 @@
 /* ==============================
-   Variables CSS 
+   Variables CSS - Modo Dios Premium
 ============================== */
 :root {
   /* === BASE CORPORATIVA CLARA === */
@@ -184,7 +184,7 @@ img {
 }
 
 /* ==============================
-   Navegación Premium Mejorada - COMPLETAMENTE RESPONSIVE
+   Navegación Premium COMPLETAMENTE RESPONSIVE
 ============================== */
 .navbar {
   position: fixed;
@@ -225,13 +225,14 @@ img {
   z-index: 1001;
 }
 
-.nav-list {
+/* Menú de navegación principal */
+.nav-menu {
   display: flex;
   gap: 2rem;
   list-style: none;
 }
 
-.nav-list a {
+.nav-menu a {
   color: var(--text-primary);
   font-weight: 600;
   font-size: 1rem;
@@ -243,7 +244,7 @@ img {
   background: rgba(255, 255, 255, 0.7);
 }
 
-.nav-list a::before {
+.nav-menu a::before {
   content: '';
   position: absolute;
   top: 0;
@@ -255,19 +256,19 @@ img {
   z-index: -1;
 }
 
-.nav-list a:hover::before,
-.nav-list a.activo::before {
+.nav-menu a:hover::before,
+.nav-menu a.activo::before {
   left: 0;
 }
 
-.nav-list a:hover,
-.nav-list a.activo {
+.nav-menu a:hover,
+.nav-menu a.activo {
   color: var(--text-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
 }
 
-/* Menú Hamburguesa para móviles */
+/* Menú Hamburguesa - CORREGIDO */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -276,15 +277,33 @@ img {
   background: transparent;
   border: none;
   z-index: 1001;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-toggle span {
   width: 25px;
   height: 3px;
   background: var(--text-primary);
-  margin: 3px 0;
+  margin: 2px 0;
   transition: var(--transition);
   border-radius: 2px;
+  display: block;
+}
+
+/* Estados del menú hamburguesa */
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* ==============================
@@ -1045,11 +1064,11 @@ img {
     gap: 2rem;
   }
   
-  .nav-list {
+  .nav-menu {
     gap: 1.5rem;
   }
   
-  .nav-list a {
+  .nav-menu a {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
@@ -1060,7 +1079,7 @@ img {
   }
 }
 
-/* Tablets pequeñas y móviles grandes */
+/* Tablets pequeñas y móviles grandes - NAVEGACIÓN CORREGIDA */
 @media (max-width: 768px) {
   .navbar {
     padding: 0.8rem 0;
@@ -1068,9 +1087,11 @@ img {
   
   .nav-container {
     padding: 0 15px;
+    position: relative;
   }
   
-  .nav-list {
+  /* Menú de navegación para móviles - CORREGIDO */
+  .nav-menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -1086,44 +1107,50 @@ img {
     gap: 0;
     transform: translateX(-100%);
     opacity: 0;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-medium);
     z-index: 999;
+    visibility: hidden;
   }
   
-  .nav-list.active {
+  .nav-menu.active {
     transform: translateX(0);
     opacity: 1;
+    visibility: visible;
   }
   
-  .nav-list li {
+  .nav-menu li {
     width: 100%;
     text-align: center;
   }
   
-  .nav-list a {
+  .nav-menu a {
     display: block;
     padding: 1.5rem 2rem;
     border-radius: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 1.2rem;
     background: transparent;
+    margin: 0;
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: all 0.3s ease;
   }
   
+  .nav-menu.active a {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .nav-menu a:nth-child(1) { transition-delay: 0.1s; }
+  .nav-menu a:nth-child(2) { transition-delay: 0.15s; }
+  .nav-menu a:nth-child(3) { transition-delay: 0.2s; }
+  .nav-menu a:nth-child(4) { transition-delay: 0.25s; }
+  .nav-menu a:nth-child(5) { transition-delay: 0.3s; }
+  
+  /* Botón hamburguesa - CORREGIDO */
   .nav-toggle {
     display: flex;
-  }
-  
-  .nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
   }
   
   .sobre-mi-section,
@@ -1242,7 +1269,7 @@ img {
     font-size: 1.2rem;
   }
   
-  .nav-list a {
+  .nav-menu a {
     padding: 1.2rem 2rem;
     font-size: 1.1rem;
   }
@@ -1273,7 +1300,7 @@ img {
     font-size: clamp(1.5rem, 8vw, 2.2rem);
   }
   
-  .nav-list a {
+  .nav-menu a {
     padding: 1rem 1.5rem;
     font-size: 1rem;
   }
@@ -1353,7 +1380,7 @@ img {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .nav-list a {
+  .nav-menu a {
     color: var(--text-primary);
     background: rgba(15, 23, 42, 0.7);
   }
@@ -1381,11 +1408,11 @@ img {
 
 /* Ajustes para dispositivos con pantalla táctil */
 @media (hover: none) and (pointer: coarse) {
-  .nav-list a:hover::before {
+  .nav-menu a:hover::before {
     left: -100%;
   }
   
-  .nav-list a:hover {
+  .nav-menu a:hover {
     transform: none;
   }
   
