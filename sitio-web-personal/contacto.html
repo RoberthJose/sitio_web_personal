@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto - Roberth José Jurado Intriago</title>
+  <meta name="description" content="Contacta a Roberth José Jurado Intriago - Desarrollador Full Stack para proyectos y colaboraciones.">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Íconos Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ==== Ajustes rápidos para mantener todo visible y elegante ==== */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #2c3e50;
+    }
+
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-list a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-list a:hover {
+      color: #007bff;
+    }
+
+    .nav-list .activo {
+      color: #007bff;
+      font-weight: 600;
+    }
+
+    .contacto-section {
+      padding: 60px 20px;
+    }
+
+    .contacto-container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .contacto-container h1 {
+      margin-bottom: 10px;
+      font-size: 28px;
+      color: #2c3e50;
+    }
+
+    .contacto-container p {
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .input-field {
+      margin-bottom: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #dcdfe6;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #007bff;
+    }
+
+    textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .mensaje-exito, .mensaje-error {
+      display: none;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .mensaje-exito {
+      color: #27ae60;
+    }
+
+    .mensaje-error {
+      color: #e74c3c;
+    }
+
+    .redes-container {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .red-social {
+      background: #f5f7fa;
+      color: #2c3e50;
+      border-radius: 8px;
+      padding: 10px 18px;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 15px;
+    }
+
+    .red-social i {
+      margin-right: 8px;
+      color: #007bff;
+    }
+
+    .red-social:hover {
+      background: #007bff;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      color: #666;
+      font-size: 14px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      margin-top: 60px;
+    }
+
+    /* Animación fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="contacto-page">
+
+  <!-- ===== Barra de navegación ===== -->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="servicios.html">Habilidades / Servicios</a></li>
+        <li><a class="activo" href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Sección de contacto ===== -->
+  <main>
+    <section class="contacto-section">
+      <div class="contacto-container fade-in">
+        <h1>📩 Contáctame</h1>
+        <p>Si deseas ponerte en contacto conmigo, completa el siguiente formulario:</p>
+
+        <form id="contact-form">
+          <div class="input-field">
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
+          </div>
+          <div class="input-field">
+            <input type="email" id="correo" name="correo" placeholder="Tu correo electrónico" required />
+          </div>
+          <div class="input-field">
+            <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje" required />
+          </div>
+          <div class="input-field">
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Enviar Mensaje</button>
+
+          <div class="mensaje-exito" id="msg-exito">✅ Tu mensaje ha sido enviado correctamente.</div>
+          <div class="mensaje-error" id="msg-error">❌ Ocurrió un error al enviar el mensaje.</div>
+        </form>
+
+        <div class="redes-container">
+          <a href="https://github.com/RoberthJose" target="_blank" rel="noopener" class="red-social"><i class="fa-brands fa-github"></i>GitHub</a>
+          <a href="https://www.linkedin.com/in/roberth-jose-jurado-intriago-2a8a65397/" target="_blank" rel="noopener" class="red-social"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+          <a href="https://www.facebook.com/roberth.jose.jurado" target="_blank" rel="noopener" class="red-social"><i class="fa-brands fa-facebook"></i>Facebook</a>
+          <a href="https://www.instagram.com/roberth_intriago10/" target="_blank" rel="noopener" class="red-social"><i class="fa-brands fa-instagram"></i>Instagram</a>
+          <a href="https://wa.me/593995296138" target="_blank" rel="noopener" class="red-social"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Roberth José Jurado Intriago | Todos los derechos reservados.
+  </footer>
+
+  <!-- ===== EMAILJS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // Inicializar EmailJS
+    (function(){
+      emailjs.init("TRdbOT7oPtK5q3izJ");
+    })();
+
+    // Animación al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.fade-in').classList.add('fade-in-visible');
+    });
+
+    // Envío de formulario
+    document.getElementById("contact-form").addEventListener("submit", function(event){
+      event.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const asunto = document.getElementById("asunto").value.trim();
+      const mensaje = document.getElementById("mensaje").value.trim();
+      const msgExito = document.getElementById("msg-exito");
+      const msgError = document.getElementById("msg-error");
+
+      if (!nombre || !correo || !asunto || !mensaje) {
+        msgError.textContent = "⚠️ Por favor completa todos los campos.";
+        msgError.style.display = "block";
+        msgExito.style.display = "none";
+        return;
+      }
+
+      const params = { nombre, correo, asunto, mensaje };
+
+      emailjs.send("service_1z2pjxh", "template_to0pi5n", params)
+      .then(() => {
+        msgExito.style.display = "block";
+        msgError.style.display = "none";
+        document.getElementById("contact-form").reset();
+        setTimeout(() => msgExito.style.display = "none", 4000);
+      })
+      .catch(() => {
+        msgError.textContent = "❌ Error al enviar el mensaje. Inténtalo nuevamente.";
+        msgError.style.display = "block";
+        msgExito.style.display = "none";
+      });
+    });
+  </script>
+</body>
+</html>
