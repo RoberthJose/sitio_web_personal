@@ -14,24 +14,28 @@
 
     <!-- Iconos Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="index-page">
 
     <!-- Barra de navegación -->
     <header>
         <nav class="navbar">
+            <div class="nav-logo">Roberth.J</div>
             <ul class="nav-list">
-                <li><a class="activo" href="index.html">Inicio</a></li>
-                <li><a href="sobre-mi.html">Sobre mí</a></li>
-                <li><a href="portafolio.html">Portafolio</a></li>
-                <li><a href="servicios.html">Habilidades / Servicios</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a class="activo" href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Sección principal centrada -->
-    <section class="inicio">
+    <section id="inicio" class="inicio">
         <div class="inicio-content fade-in">
 
             <!-- Foto centrada con animación -->
@@ -44,6 +48,12 @@
             <p class="descripcion">
                 Estudiante de Tecnologías de la Información y Comunicación | Apasionado por la tecnología, la innovación y el aprendizaje continuo.
             </p>
+
+            <!-- Botones de acción -->
+            <div class="btn-container">
+                <a href="#portafolio" class="btn">Ver Mi Trabajo</a>
+                <a href="#contacto" class="btn btn-secondary">Contactarme</a>
+            </div>
 
         </div>
     </section>
